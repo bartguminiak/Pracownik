@@ -2,11 +2,10 @@ require 'rails_helper'
 
 RSpec.describe Employee, type: :model do
   describe '#full_name' do
-    let(:employee) { described_class.create(first_name: 'Foo', last_name: 'Bar') }
-    it 'shoud return full name of employee' do
-      employee = described_class.create(first_name: 'Foo', last_name: 'Bar')
+    let(:employee) { FactoryBot.create(:employee, first_name: 'Donald', last_name: 'Trump') }
 
-      expect(employee.full_name).to eq('Foo Bar')
+    it 'shoud return full name of employee' do
+      expect(employee.full_name).to eq('Donald Trump')
     end
   end
 end
