@@ -72,6 +72,20 @@ RSpec.describe 'Employee API' do
         expect(db_employee.first_name).to eq('Brad')
         expect(db_employee.last_name).to eq('Pitt')
       end
+
+    context 'when inserting user without firt_name' do
+      let(:input) do
+        {
+            last_name: 'Pitt'
+        }
+        end
+
+        it 'returns 422 status', :aggregate_failures do
+          expect { request }.to change { Employee.count}.by(0)
+          expect(response.status).to eq(422)
+        end
+    end
+
   end
 
   private
