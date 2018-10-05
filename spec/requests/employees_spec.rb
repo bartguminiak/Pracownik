@@ -3,7 +3,6 @@ require 'rails_helper'
 RSpec.describe 'Employee API' do
 
   before(:all) do
-    Employee.destroy_all
     FactoryBot.create_list(:employee, 3)
   end
 
