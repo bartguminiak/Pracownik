@@ -16,5 +16,17 @@ class EmployeesController < ApplicationController
 
   rescue ActiveRecord::RecordNotFound
       render json: {}, status: :not_found
-    end
+  end
+
+  def create
+    employee = Employee.create(employee_params)
+
+    render json: { full_name: employee.full_name }, status: :created
+  end
+
+  private
+
+  def employee_params
+    params.permit(:first_name, :last_name)
+  end
 end

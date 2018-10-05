@@ -8,4 +8,12 @@ RSpec.describe Employee, type: :model do
       expect(employee.full_name).to eq('Donald Trump')
     end
   end
+
+  describe '#validation' do
+    let(:employee) { FactoryBot.build(:employee) }
+
+    it 'shoud return full name of employee' do
+      expect(employee.full_name).to eq('Donald Trump')
+    end
+  end
 end
